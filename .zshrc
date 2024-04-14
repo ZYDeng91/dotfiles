@@ -118,7 +118,6 @@ alias vpn="wg-quick up eternal"
 alias novpn="wg-quick down eternal"
 alias radio="mpv https://radio.zydeng.com/radio.ogg"
 alias kcon="/usr/lib/kdeconnectd"
-alias vim="nvim"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

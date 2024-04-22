@@ -8,7 +8,7 @@
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
     //"modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "hyprland/language", "battery", "battery#bat2", "clock", "tray"],
-    "modules-right": ["tray", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "clock"],
+    "modules-right": ["tray", "pulseaudio", "network", "cpu", "memory", "battery", "clock"],
     // Modules configuration
     // "hyprland/workspaces": {
     //     "disable-scroll": true,
@@ -26,15 +26,6 @@
     //         "default": ""
     //     }
     // },
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
     "hyprland/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },

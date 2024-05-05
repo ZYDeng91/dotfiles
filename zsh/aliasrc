@@ -1,0 +1,18 @@
+alias ..="cd .."
+alias ls="ls --color"
+alias la="ls --color -lAh"
+alias nv="nvim"
+alias mv="mv -v"
+alias cp="cp -vr"
+alias rm="rm -vI"
+alias mkdir="mkdir -p"
+
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+
+alias vpn="wg-quick up eternal"
+alias novpn="wg-quick down eternal"
+alias radio="shrimp https://radio.zydeng.com/radio.ogg"
+alias kcon="/usr/lib/kdeconnectd"
+

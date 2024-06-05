@@ -1,0 +1,13 @@
+---
+- name: Ensure qutebrowser config folder is created
+  file:
+    path: "{{ ansible_env.HOME }}/.config/qutebrowser"
+    state: directory
+    owner: "{{ ansible_env.USER }}"
+    mode: "0755"
+
+- name: Create hard link to target
+  file:
+    src: "{{ role_path }}/files/config.py"
+    dest: "{{ ansible_env.HOME }}/.config/qutebrowser/config.py"
+    state: hard

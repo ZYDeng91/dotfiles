@@ -1,0 +1,39 @@
+- name: Deploy dotfiles
+  hosts: all
+  become: no
+  roles:
+    - role: alacritty
+      tags:
+        - alacritty
+
+    - role: dunst
+      tags:
+        - dunst
+
+    - role: hypr
+      tags:
+        - hypr
+
+    - role: lf
+      tags:
+        - lf
+
+    - role: qutebrowser
+      tags:
+        - qutebrowser
+
+    - role: wallpapers
+      tags:
+        - wallpapers
+
+    - role: waybar
+      tags:
+        - waybar
+
+    - role: wlogout
+      tags:
+        - wlogout
+
+    - role: zathura
+      tags:
+        - zathura

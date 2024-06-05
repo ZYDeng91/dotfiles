@@ -1,0 +1,27 @@
+---
+- name: Ensure a wallpaper folder is created
+  loop:
+    - Desktop/
+    - Desktop/wallpapers
+  file:
+    path: "{{ ansible_env.HOME }}/{{ item }}"
+    state: directory
+    owner: "{{ ansible_env.USER }}"
+    mode: "0755"
+
+- name: Create hard link to target
+  with_fileglob:
+    - "files/*.jpg"
+    - "files/*.png"
+  file:
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/Desktop/wallpapers/{{ item | basename }}"
+    state: hard
+
+- name: Hard link next wallpaper script to path
+  become: yes
+  file:
+    src: "{{ role_path }}/files/swww_next.sh"
+    dest: "/usr/local/bin/swww_next"
+    mode: "0777"
+    state: hard

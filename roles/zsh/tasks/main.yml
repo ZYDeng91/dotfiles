@@ -1,0 +1,12 @@
+---
+- name: Create hard link to zshrc
+  file:
+    src: "{{ role_path }}/files/zshrc"
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+    state: hard
+
+- name: Create hard link to aliasrc
+  file:
+    src: "{{ role_path }}/files/aliasrc"
+    dest: "{{ ansible_env.HOME }}/.config/aliasrc"
+    state: hard

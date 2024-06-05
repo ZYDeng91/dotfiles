@@ -1,0 +1,39 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: Refresh pacman database
+    pacman:
+      update_cache: true
+  - name: Ensure the required packages are installed and up to date
+    pacman:
+      name:
+        - alacritty # terminal emulator
+        - dunst # notification manager
+        - git # required for aur
+        - greetd # greeter
+        - grim # screenshot util
+        - hyprland # wm/compositor
+        - lf # file manager
+        - pipewire # audio
+        - pipewire-pulse # support for pulseaudio
+        - qutebrowser # browser with vim-like keybinds
+        - rofi-wayland # launcher/menu
+        - waybar # bar
+        - zathura # pdf reader
+        - zsh # zoomer shell
+        - zsh-syntax-highlighting
+      state: present 
+  - name: Ensure yay (aur helper) is installed
+    become: no
+    shell: "yay -V || (git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si --noconfirm)"
+
+## yay in ansible is broken and will have to ask for password (can't makepkg as root)
+#  - name: Install aur packages with yay
+#    pacman:
+#      name: 
+#        - swww # wayland wallpaper
+#        - wlogout # power menu
+#      state: present
+#      executable: yay
+#      extra_args: --builddir /var/cache/yay

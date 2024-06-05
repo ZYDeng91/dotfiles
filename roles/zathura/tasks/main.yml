@@ -1,0 +1,13 @@
+---
+- name: Ensure zathura config folder is created
+  file:
+    path: "{{ ansible_env.HOME }}/.config/zathura"
+    state: directory
+    owner: "{{ ansible_env.USER }}"
+    mode: "0755"
+
+- name: Create hard link to target
+  file:
+    src: "{{ role_path }}/files/zathurarc"
+    dest: "{{ ansible_env.HOME }}/.config/zathura/zathurarc"
+    state: hard

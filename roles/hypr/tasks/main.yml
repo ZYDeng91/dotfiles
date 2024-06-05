@@ -1,0 +1,22 @@
+---
+- name: Ensure hyprland config folder is created
+  file:
+    path: "{{ ansible_env.HOME }}/.config/hypr"
+    state: directory
+    owner: "{{ ansible_env.USER }}"
+    mode: "0755"
+
+- name: Create hard link to target
+  with_fileglob:
+    - "files/*.conf"
+  file:
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.config/hypr/{{ item | basename }}"
+    state: hard
+
+- name: Set greetd to launch hyprland
+  become: yes
+  file:
+    src: "{{ role_path }}/files/greetd.toml"
+    dest: "/etc/greetd/config.toml"
+    state: hard

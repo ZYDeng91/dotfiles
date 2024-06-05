@@ -1,0 +1,15 @@
+---
+- name: Ensure waybar config folder is created
+  file:
+    path: "{{ ansible_env.HOME }}/.config/waybar"
+    state: directory
+    owner: "{{ ansible_env.USER }}"
+    mode: "0755"
+
+- name: Create hard link to target
+  with_fileglob:
+    - "files/*"
+  file:
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.config/waybar/{{ item | basename }}"
+    state: hard

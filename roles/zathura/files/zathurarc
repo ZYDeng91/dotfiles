@@ -1,0 +1,7 @@
+set selection-clipboard clipboard
+
+map I recolor
+set recolor-lightcolor \#2E3440
+set recolor-darkcolor \#ECEFF4
+
+map G goto bottom

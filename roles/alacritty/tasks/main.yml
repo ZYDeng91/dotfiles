@@ -1,13 +1,13 @@
 ---
-- name: Ensure alacritty config folder is created
+- name: Ensure the alacritty config folder is created
   file:
     path: "{{ ansible_env.HOME }}/.config/alacritty"
     state: directory
     owner: "{{ ansible_env.USER }}"
     mode: "0755"
 
-- name: Create hard link to target
+- name: Deploy the alacritty config with symlink
   file:
     src: "{{ role_path }}/files/alacritty.toml"
     dest: "{{ ansible_env.HOME }}/.config/alacritty/alacritty.toml"
-    state: hard
+    state: link

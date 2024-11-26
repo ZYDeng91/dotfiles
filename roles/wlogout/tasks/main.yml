@@ -1,15 +1,15 @@
 ---
-- name: Ensure wlogout config folder is created
+- name: Ensure the wlogout config folder is created
   file:
     path: "{{ ansible_env.HOME }}/.config/wlogout"
     state: directory
     owner: "{{ ansible_env.USER }}"
     mode: "0755"
 
-- name: Create hard link to target
+- name: Deploy the wlogout configs with symlink
   with_fileglob:
     - "files/*"
   file:
     src: "{{ item }}"
     dest: "{{ ansible_env.HOME }}/.config/wlogout/{{ item | basename }}"
-    state: hard
+    state: link

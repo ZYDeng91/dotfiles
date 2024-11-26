@@ -1,13 +1,13 @@
 ---
-- name: Ensure dunst config folder is created
+- name: Ensure the dunst config folder is created
   file:
     path: "{{ ansible_env.HOME }}/.config/dunst"
     state: directory
     owner: "{{ ansible_env.USER }}"
     mode: "0755"
 
-- name: Create hard link to target
+- name: Deploy the dunst config with symlink
   file:
     src: "{{ role_path }}/files/dunstrc"
     dest: "{{ ansible_env.HOME }}/.config/dunst/dunstrc"
-    state: hard
+    state: link

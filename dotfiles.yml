@@ -1,4 +1,11 @@
-- name: Deploy dotfiles
+- name: Ensure the dotfiles folder is created
+  file:
+    path: "{{ ansible_env.HOME }}/.config"
+    state: directory
+    owner: "{{ ansible_env.USER }}"
+    mode: "0755"
+
+- name: Deploy the dotfiles
   hosts: all
   become: no
   roles:

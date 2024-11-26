@@ -1,12 +1,12 @@
 ---
-- name: Create hard link to zshrc
+- name: Deploy the zshrc with symlink
   file:
     src: "{{ role_path }}/files/zshrc"
     dest: "{{ ansible_env.HOME }}/.zshrc"
-    state: hard
+    state: link
 
-- name: Create hard link to aliasrc
+- name: Deploy the aliasrc with symlink
   file:
     src: "{{ role_path }}/files/aliasrc"
     dest: "{{ ansible_env.HOME }}/.config/aliasrc"
-    state: hard
+    state: link

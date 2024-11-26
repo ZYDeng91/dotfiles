@@ -1,15 +1,15 @@
 ---
-- name: Ensure lf config folder is created
+- name: Ensure the lf config folder is created
   file:
     path: "{{ ansible_env.HOME }}/.config/lf"
     state: directory
     owner: "{{ ansible_env.USER }}"
     mode: "0755"
 
-- name: Create hard link to target
+- name: Deploy the lf configs with symlink
   with_fileglob:
     - "files/*"
   file:
     src: "{{ item }}"
     dest: "{{ ansible_env.HOME }}/.config/lf/{{ item | basename }}"
-    state: hard
+    state: link

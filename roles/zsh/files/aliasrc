@@ -7,7 +7,7 @@ alias cp="cp -vr"
 alias rm="rm -vI"
 alias mkdir="mkdir -p"
 alias sudo="doas"
-alias syu="pacman -Syu"
+alias syu="doas pacman -Syu"
 
 alias -g ...='../..'
 alias -g ....='../../..'
